@@ -1,9 +1,10 @@
 import { useTodoList } from "./context/TodoContext";
+import styles from "./TodoItem.module.scss";
 
 function TodoItem({ item, index }) {
   const { handleCheckedChange, handleDeletClick } = useTodoList();
   return (
-    <li>
+    <li className={styles.todoList}>
       <input
         type="checkbox"
         checked={item.checked}
@@ -12,8 +13,12 @@ function TodoItem({ item, index }) {
       <p style={item.checked ? { textDecoration: "line-through" } : null}>
         {item.value}
       </p>
-      <button type="button" onClick={() => handleDeletClick(index)}>
-        삭제
+      <button
+        className={styles.todoDeletButton}
+        type="button"
+        onClick={() => handleDeletClick(index)}
+      >
+        X
       </button>
     </li>
   );
